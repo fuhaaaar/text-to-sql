@@ -1,0 +1,31 @@
+question,expected_output_contains
+Which region had the highest total profit?,West
+What are the top 5 most profitable products?,Canon imageCLASS 2200 Advanced Copier
+How many unique customers are there?,793
+What is the total revenue across all orders?,2297200
+Which city had the highest total sales?,New York City
+What is the average discount given across all orders?,0.15
+Which category has the highest total sales?,Technology
+Which state had the lowest total profit?,Texas
+Which state has the highest number of orders?,California
+What is the total profit from the West region?,108418
+Which sub-category had the most orders?,Binders
+What is the average profit per order?,28.65
+Which customer made the most purchases?,William Brown
+Which ship mode is used the most?,Standard Class
+What is the total quantity sold across all orders?,37873
+Which product had the highest single sale?,Canon imageCLASS 2200 Advanced Copier
+How many distinct states are in the dataset?,49
+What is the total sales in the East region?,678781
+What is the total sales from Consumer segment?,1161401
+What are the bottom 5 cities by profit?,Philadelphia
+How many orders were placed in California?,2001
+What is the average sales per order?,229.85
+Which segment generates the most revenue?,Consumer
+Which region has the least number of orders?,South
+What is the highest single order profit?,8399
+Which state has the most customers?,California
+How many orders were shipped using First Class?,1538
+What is the profit margin for Technology category?,0.17
+Which sub-category has the highest average sales?,Copiers
+How many orders were placed in New York?,1128

@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from schema_extractor import get_schema
 from safety import is_safe, add_limit
 from executor import run_query
+from logger import log_query
 import os
 
 load_dotenv()
@@ -22,7 +23,7 @@ Important rules:
 - Return ONLY the SQL query, nothing else
 - No explanations, no markdown, no backticks
 - Always use LIMIT 100 unless the user asks for more
-- - Column names have spaces so always wrap them in double quotes like "Order ID"
+- Column names have spaces so always wrap them in double quotes like "Order ID"
 - Always include the actual numbers/values in the result, not just names
 - For questions about highest/lowest/most/best, always include the metric you are sorting by
 
@@ -41,9 +42,10 @@ Important rules:
 - Return ONLY the SQL query, nothing else
 - No explanations, no markdown, no backticks
 - Always use LIMIT 100 unless the user asks for more
-- - Column names have spaces so always wrap them in double quotes like "Order ID"
+- Column names have spaces so always wrap them in double quotes like "Order ID"
 - Always include the actual numbers/values in the result, not just names
 - For questions about highest/lowest/most/best, always include the metric you are sorting by
+
 Convert this question to SQL:
 {question}"""
 
@@ -61,6 +63,7 @@ Convert this question to SQL:
 def ask(question):
     max_retries = 2
     error = None
+    retries = 0
 
     for attempt in range(max_retries + 1):
         sql = generate_sql(question, error=error)
@@ -68,15 +71,19 @@ def ask(question):
 
         safe, message = is_safe(sql)
         if not safe:
+            log_query(question, sql, retries, message, False)
             return None, None, message
 
         try:
             result = run_query(sql)
+            log_query(question, sql, retries, None, True)
             return result, sql, None
 
         except Exception as e:
             error = str(e)
+            retries += 1
             if attempt == max_retries:
+                log_query(question, sql, retries, error, False)
                 return None, sql, f"Query failed after {max_retries} retries. Last error: {error}"
 
     return None, None, "Something went wrong."

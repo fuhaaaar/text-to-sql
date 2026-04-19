@@ -6,3 +6,5 @@ Sample - Superstore.csv
 test_groq.py
 sql_generator.py
 setup_db.py
+query_logs.json
+eval_report.json
