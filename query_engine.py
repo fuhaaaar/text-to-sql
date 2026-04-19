@@ -7,8 +7,10 @@ from logger import log_query
 import os
 
 load_dotenv()
+import streamlit as st
 
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+api_key = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+client = Groq(api_key=api_key)
 
 def generate_sql(question, error=None):
     schema = get_schema()

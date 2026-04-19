@@ -4,7 +4,9 @@ import os
 
 load_dotenv()
 
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+import streamlit as st
+api_key = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+client = Groq(api_key=api_key)
 
 def explain_result(question, result):
     result_str = result.to_string(index=False)
@@ -42,4 +44,3 @@ if __name__ == "__main__":
         print(result)
         print("\nExplanation:")
         print(explanation)
-        
