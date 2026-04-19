@@ -2,6 +2,8 @@
 
 An AI-powered web app that lets anyone query a business database in plain English — no SQL knowledge needed. Type a question, get an answer instantly.
 
+🔗 **Live Demo:** https://text-to-sql-4yizuxtxs3verbkqz5a76b.streamlit.app
+
 ---
 
 ## The Problem It Solves
