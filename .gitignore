@@ -2,3 +2,7 @@
 __pycache__/
 *.pyc
 *.db
+Sample - Superstore.csv
+test_groq.py
+sql_generator.py
+setup_db.py
